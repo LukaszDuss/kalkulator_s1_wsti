@@ -1,0 +1,18 @@
+﻿  Kalkulator.cpp
+c:\users\wookie\source\repos\kalkulator\kalkulator\kalkulator.cpp(49): warning C4244: 'initializing': conversion from 'double' to 'long', possible loss of data
+c:\users\wookie\source\repos\kalkulator\kalkulator\kalkulator.cpp(54): warning C4244: 'initializing': conversion from 'double' to 'long', possible loss of data
+c:\users\wookie\source\repos\kalkulator\kalkulator\kalkulator.cpp(59): warning C4244: 'initializing': conversion from 'double' to 'long', possible loss of data
+c:\users\wookie\source\repos\kalkulator\kalkulator\kalkulator.cpp(80): warning C4244: 'initializing': conversion from 'double' to 'long', possible loss of data
+c:\users\wookie\source\repos\kalkulator\kalkulator\kalkulator.cpp(99): warning C4566: character represented by universal-character-name '\u015B' cannot be represented in the current code page (1252)
+c:\users\wookie\source\repos\kalkulator\kalkulator\kalkulator.cpp(99): warning C4566: character represented by universal-character-name '\u0107' cannot be represented in the current code page (1252)
+c:\users\wookie\source\repos\kalkulator\kalkulator\kalkulator.cpp(115): warning C4566: character represented by universal-character-name '\u0107' cannot be represented in the current code page (1252)
+c:\users\wookie\source\repos\kalkulator\kalkulator\kalkulator.cpp(115): warning C4566: character represented by universal-character-name '\u0119' cannot be represented in the current code page (1252)
+c:\users\wookie\source\repos\kalkulator\kalkulator\kalkulator.cpp(117): warning C4566: character represented by universal-character-name '\u0107' cannot be represented in the current code page (1252)
+c:\users\wookie\source\repos\kalkulator\kalkulator\kalkulator.cpp(117): warning C4566: character represented by universal-character-name '\u0119' cannot be represented in the current code page (1252)
+c:\users\wookie\source\repos\kalkulator\kalkulator\kalkulator.cpp(117): warning C4566: character represented by universal-character-name '\u017C' cannot be represented in the current code page (1252)
+c:\users\wookie\source\repos\kalkulator\kalkulator\kalkulator.cpp(127): warning C4566: character represented by universal-character-name '\u0105' cannot be represented in the current code page (1252)
+c:\users\wookie\source\repos\kalkulator\kalkulator\kalkulator.cpp(133): warning C4566: character represented by universal-character-name '\u0105' cannot be represented in the current code page (1252)
+c:\users\wookie\source\repos\kalkulator\kalkulator\kalkulator.cpp(154): warning C4244: '=': conversion from 'double' to 'char', possible loss of data
+c:\users\wookie\source\repos\kalkulator\kalkulator\kalkulator.cpp(159): warning C4244: '=': conversion from 'double' to 'char', possible loss of data
+c:\users\wookie\source\repos\kalkulator\kalkulator\kalkulator.cpp(166): warning C4566: character represented by universal-character-name '\u0119' cannot be represented in the current code page (1252)
+  Kalkulator.vcxproj -> C:\Users\Wookie\source\repos\Kalkulator\Debug\Kalkulator.exe
