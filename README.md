@@ -1,0 +1,1 @@
+# kalkulator_s1_wsti
