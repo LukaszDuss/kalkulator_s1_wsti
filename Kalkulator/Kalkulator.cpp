@@ -22,41 +22,29 @@ c:\ > kalk.exe 23 z 2734
 
 	I podobnie z pozostałymi operacjami jakie rozumie nasz kalkulator.Należy zapewnić obsługę ewentualnych błędów typu wpisanie 2a zamiast 2, wybranie złego operatora itp.*/
 
-
+#include "pch.h"
 #include <iostream>
 #include <stdlib.h>
 #include <math.h>
-#include<limits>
+#include <limits>
+//
 
 const double PI = 3.14159265358979323846;
 
 using namespace std;
 
-int IsInt() {
-	int a;
-	cin >> a;
-	while (cin.fail())
-	{
-		cout << "Enter only an integer please. Try again." << std::endl;
-		cin.clear();
-		cin.ignore();
-		cin >> a;
-	}
-	return a;
-}
-
 	void Dodawanie(double x, double y) {
-		long int wynik = x + y;
+		double wynik = x + y;
 		cout << "Suma wynosi: " << fixed << wynik << endl;
 	}
 	
 	void Odejmowanie( double x, double y ) {
-		long int wynik = x - y;
+		double wynik = x - y;
 		cout << "Roznica wynosi: " << fixed << wynik << endl;
 	}
 
 	void Mnozenie( double x, double y ) {
-		long int wynik = x * y;
+		double wynik = x * y;
 		cout << "Iloczyn wynosi: " << fixed << wynik << endl;
 	}
 
@@ -77,7 +65,7 @@ int IsInt() {
 		if (x == 0 && a == 0) {
 			cout << "Nie moge potegowac 0^0!" << endl;
 		} else {
-			long int wynik = pow(x, a);
+			double wynik = pow(x, a);
 			cout << "Potega " << a << " stopnia z: " << x << " wynosi: " << wynik << endl;
 		}
 	}
@@ -134,184 +122,156 @@ int IsInt() {
 	}
 
 	
-int main( int argc, double argv[] )
-{
-	double a;
-	double b;
-	char wybor;
-	
-	system("CLS");
-	cout << "Witaj w calkulatorze!\n" 
-		 << "Program przyjmuje tylko liczby calkowite jako dane wejsciowe!\n"
-		 << endl;
-	
-	system("pause");
+	int main(int argc, char* argv[])
+	{
+		double a;
+		double b;
+		char wybor;
+		system("CLS");
 
-	for( ; ; ) {
-		switch ( argc ) {
-		case 3 : {
-				a = argv[0];
-				wybor = argv[1];
-			}
+		cout << "Witaj w calkulatorze!\n"
+			<< argc
+			<< endl;
 
-		case 4 : {
-				a = argv[1];
-				wybor = argv[2];
-				b = argv[3];
-			}
-		}
+		system("pause");
 
-		system("cls");
-		
-		cout << "Wybierz operację:\n" 
-			<< "\t + \tDodawanie\n"
-			<< "\t - \tOdejmowanie\n"
-			<< "\t * \tMnozenie\n"
-			<< "\t / \tDzielenie\n"
-			<< "\t ^ \tPotegowanie\n"
-			<< "\t p \tPierwiastkowanie\n"
-			<< "\t % \tProcent\n"
-			<< "\t o \tOdwrotnosc\n"
-			<< "\t l \tLogarytmowanie\n"
-			<< "\t s \tSinus\n"
-			<< "\t c \tCosinus\n"
-			<< "\t q \tAby wyjsc.\n"
-			<< "\nWybieram: \t"
-			<<endl;
-		
-		cin >> wybor;
-		
-		switch ( wybor ) {
-			case '+': {
-				if (argc != 4) {
+		for (; ; ) {
+			
+			
+			
+			system("cls");
+
+			cout << "Wybierz operację:\n"
+				<< "\t + \tDodawanie\n"
+				<< "\t - \tOdejmowanie\n"
+				<< "\t * \tMnozenie\n"
+				<< "\t / \tDzielenie\n"
+				<< "\t ^ \tPotegowanie\n"
+				<< "\t p \tPierwiastkowanie\n"
+				<< "\t % \tProcent\n"
+				<< "\t o \tOdwrotnosc\n"
+				<< "\t l \tLogarytmowanie\n"
+				<< "\t s \tSinus\n"
+				<< "\t c \tCosinus\n"
+				<< "\t q \tAby wyjsc.\n"
+				<< "\nWybieram: \t"
+				<< endl;
+
+			cin >> wybor;
+
+
+
+			switch (wybor) {
+				case '+': {
 					cout << "Podaj pierwsza liczbe: ";
-					a = IsInt();
-				
+					cin >> a;
+
 					cout << "Podaj druga liczbe: ";
-					b = IsInt();
-				}
-				Dodawanie(a, b);	
-				system("pause");
-				break;
-
-			} case '-': {
-				if (argc != 3) {
-					cout << "Podaj pierwsza liczbe: ";
-					a = IsInt();
-					cout << "Podaj druga liczbe: ";
-					b = IsInt();
-				}
-				Odejmowanie(a, b);
-				system("pause");
-				break;
-
-			} case '*': {
-				if (argc != 3) {
-					cout << "Podaj pierwsza liczbe: ";
-					a = IsInt();
+					cin >> b;
 					
-					cout << "Podaj druga liczbe: ";
-					b = IsInt();
-				}
-				Mnozenie(a, b);
-				system("pause");
-				break;
+					Dodawanie(a, b);
+					system("pause");
+					break;
 
-			} case '/': {
-				if (argc != 3) {
+				} case '-': {
+					cout << "Podaj pierwsza liczbe: ";
+					cin >> a;
+					cout << "Podaj druga liczbe: ";
+					cin >> b;
+					Odejmowanie(a, b);
+					system("pause");
+					break;
+
+				} case '*': {
+					cout << "Podaj pierwsza liczbe: ";
+					cin >> a;
+
+					cout << "Podaj druga liczbe: ";
+					cin >> b;
+					Mnozenie(a, b);
+					system("pause");
+					break;
+
+				} case '/': {
 					cout << "Podaj licznik: ";
-					a = IsInt();
-					
+					cin >> a;
+
 					cout << "Podaj mianownik: ";
-					b = IsInt();
-				}
-				Dzielenie(a, b);
-				system("pause");
-				break;
+					cin >> b;
+					Dzielenie(a, b);
+					system("pause");
+					break;
 
-			} case '^': {
-				if (argc != 3) {
+				} case '^': {
 					cout << "Podaj stopien potegi: ";
-					a = IsInt();
+					cin >> a;
 					cout << "Podaj podstawe potegi: ";
-					b = IsInt();
-				}
-				Potegowanie(a, b);
-				system("pause");
-				break;
+					cin >> b;
+					Potegowanie(a, b);
+					system("pause");
+					break;
 
-			} case 'p': {
-				if (argc != 3) {
+				} case 'p': {
 					cout << "Podaj stopien pierwiastka: ";
-					a = IsInt();
-					
+					cin >> a;
+
 					cout << "Podaj liczbe pierwiastkowana: ";
-					b = IsInt();
-				}
-				Pierwiastkowanie(a, b);
-				system("pause");
-				break;
+					cin >> b;
+					Pierwiastkowanie(a, b);
+					system("pause");
+					break;
 
-			} case '%': {
-				if (argc != 3) {
+				} case '%': {
 					cout << "Podaj pierwsza liczbe: ";
-					a = IsInt();
-					
+					cin >> a;
+
 					cout << "Podaj druga liczbe: ";
-					b = IsInt();
-				}
-				Procenty(a, b);
-				system("pause");
-				break;
+					cin >> b;
+					Procenty(a, b);
+					system("pause");
+					break;
 
-			} case 'o': {
-				if (argc != 2) {
+				} case 'o': {
 					cout << "Podaj liczbe: ";
-					a = IsInt();
-				}
-				Odwrotnosc(a);
-				system("pause");
-				break;
+					cin >> a;
+					Odwrotnosc(a);
+					system("pause");
+					break;
 
-			} case 'l': {
-				if (argc != 3) {
+				} case 'l': {
 					cout << "Podaj podstawe: ";
-					a = IsInt();
-					
+					cin >> a;
 					cout << "Podaj liczbe logarytmowana: ";
-					b = IsInt();
-				}
-				Logarytmowanie(a, b);
-				system("pause");
-				break;
+					cin >> b;
+					
+					Logarytmowanie(a, b);
+					system("pause");
+					break;
 
-			} case 's': {
-				if (argc != 2) {
+				} case 's': {
 					cout << "Podaj kat w stopniach: ";
-					a = IsInt();
-				}
-				Sinus(a);
-				system("pause");
-				break;
+					cin >> a;
+					Sinus(a);
+					system("pause");
+					break;
 
-			} case 'c': {
-				if (argc != 2) {
+				} case 'c': {
 					cout << "Podaj kat w stopniach: ";
-					a = IsInt();
+					cin >> a;
+					Cosinus(a);
+					system("pause");
+					break;
+
+				} case 'q': {
+					exit(0);
+					break;
+
+				} default: {
+					cout << "Niepoprawny operator!\n";
+					system("pause");
+					break;
 				}
-				Cosinus(a);
-				system("pause");
-				break;
-
-			} case 'q': {
-				exit(0);
-				break;
-
-			} default: {
-				cout << "Niepoprawny operator!\n";
-				system("pause");
-				break;
 			}
 		}
-	}	
-}
+		return 0;
+	}
