@@ -1,45 +1,31 @@
-﻿/*
-- brak obslugi linii polecen
-- ZROBIONE
+/* Kalkulator
+Aplikacja konsolowa typu zaawansowany kalkulator.Program ma umożliwiać wykonywanie operacji (-GOTOWE):
 
-- brak polskich liter zamiast nich "krzaczki", to trzeba poprawic lub zrezygnowac z PL znakow \
--SKASOWAC POLSKIE ZNAKI
+-dodawanie -GOTOWE
+- odejmowanie -GOTOWE
+- mnożenie-GOTOWE
+- dzielenie-GOTOWE
+- potęgowanie(dowolna potęga)-GOTOWE
+- pierwiastkowanie(dowolny stopień)-GOTOWE
+- obliczanie procentów-GOTOWE
+- logarytmowanie-GOTOWE
+- 1 / x-GOTOWE
+- sin, cos-GOTOWE
 
-- przy wyliczaniu % malo jasne komunikaty dla usera
--Zmienic
+Program ma działać na zasadzie menu ekranowego jak i musi rozumieć argumenty uruchomieniowe.Przykładowo aby wykonać operację potęgowania 210 uruchamiamy program z argumentami :
 
-- logarytmowanie, jakie ln czy log ? dziala nieprawidlowo!
--WAZNE
+c:\ > kalk.exe 2 ^ 10-GOTOWE
 
-- brak obslugi bledow np mnozenie 23 * a daje 0
--WAZNE (wszystkie cin & input cmd line)
+	Jeśli chcemy obliczyć 23 % z 2734 wydajemy polecenie :
 
-- przydalo by sie dodac jeszcze opcje ile miejsc po przecinku wyswietla kalk
--ZROBIONE
+c:\ > kalk.exe 23 z 2734
 
-
-
-cout << "Poprawna skladnia kalkulatora to {liczba} {operator} {liczba} {dokladnosc}\n"
-					<< "Obslugiwane dzialania matematyczne:\n"
-					<< "\t + \tDodawanie\n"
-					<< "\t - \tOdejmowanie\n"
-					<< "\t * \tMnozenie\n"
-					<< "\t / \tDzielenie\n"
-					<< "\t ^ \tPotegowanie\n"
-					<< "\t p \tPierwiastkowanie\n"
-					<< "\t % \tProcent\n"
-					<< "\t o \tOdwrotnosc\n"
-					<< "\t l \tLogarytmowanie\n"
-					<< "\t s \tSinus\n"
-					<< "\t c \tCosinus\n"
-					<< endl;
-*/
+	I podobnie z pozostałymi operacjami jakie rozumie nasz kalkulator.Należy zapewnić obsługę ewentualnych błędów typu wpisanie 2a zamiast 2, wybranie złego operatora itp.*/
 
 #include "pch.h"
 #include <iostream>
 #include <stdlib.h>
 #include <math.h>
-#include <string>
 #include <limits>
 
 const double PI = 3.14159265358979323846;
@@ -47,7 +33,7 @@ const double PI = 3.14159265358979323846;
 using namespace std;
 /*
 double IsNumber(double number) {
-	if (isdigit(number) != 0){
+	if (isnumber(number) != 0){
 		return number;
 	} else {
 		cout << "To nie jest liczba... Sprobuj ponownie:" << endl;
@@ -56,24 +42,6 @@ double IsNumber(double number) {
 	}
 }
 */
-
-void UstawDokladnosc()
-{
-	double n;
-	cout << "Podaj ilosc wyswietlanych liczb po przecinku: " << endl;
-	cin >> n;
-	if (n <= 32000 && n >= 0)
-	{
-		cout.precision(n);
-	}
-	else
-	{
-		cout << "Poza zakresem! Podaj jeszce raz..." << endl;
-		UstawDokladnosc();
-	}
-	cout << "Dokladnosc ustawiona na: " << n << " miejsc po przecinku" << endl;
-}
-
 void Dodawanie(double x, double y)
 {
 	double wynik = x + y;
@@ -147,7 +115,7 @@ void Procenty(double x, double y)
 	else
 	{
 		double wynik = ((x / y) * 100);
-		cout << "Procentowa wartosc: " << x << " z " << y << " wynosi: " << wynik << "%" << endl;
+		cout << "Procentowa wartość " << x << " z: " << y << " wynosi: " << wynik << "%" << endl;
 	}
 }
 
@@ -165,21 +133,21 @@ void Odwrotnosc(double x)
 }
 
 void Logarytmowanie(double x, double a)
-{ // need fix
+{
 	if (a = 1 && a <= 0)
 	{
 		if (x <= 0)
 		{
-			cout << "Liczba logarytmowana musi byc wieksza od 0!";
+			cout << "Liczba logarytmowana musi być większa od 0!";
 		}
 		else
 		{
-			cout << "Liczba podstawy logarytmu musi byc wieksza od 0 oraz rozna od 1!";
+			cout << "Liczba podstawy logarytmu musi być większa od 0 oraz różna od 1!";
 		}
 	}
 	else
 	{
-		double wynik = (log(x) / log(a));
+		double wynik = log(x) / log(a);
 		cout << "Logarytm o podstawie " << a << " z " << x << " wynosi: " << fixed << wynik << endl;
 	}
 }
@@ -187,25 +155,19 @@ void Logarytmowanie(double x, double a)
 void Sinus(double x)
 {
 	double wynik = sin(x * PI / 180);
-	cout << "Sinus kata " << x << " wynosi: " << fixed << wynik << endl;
+	cout << "Sinus kąta " << x << " wynosi: " << fixed << wynik << endl;
 }
 
 void Cosinus(double x)
 {
 	double wynik = cos(x * PI / 180);
-	cout << "Cosinus kata " << x << " wynosi: " << fixed << wynik << endl;
+	cout << "Cosinus kąta " << x << " wynosi: " << fixed << wynik << endl;
 }
 
 void kalkulator(double a, char wybor, double b)
 {
 	switch (wybor)
 	{
-	case 'd':
-	{
-		UstawDokladnosc();
-		system("pause");
-		break;
-	}
 	case '+':
 	{
 
@@ -295,63 +257,30 @@ void kalkulator(double a, char wybor, double b)
 
 int main(int argc, char *argv[])
 {
-	setlocale(LC_ALL, "pl_PL");
-	double dokladnosc = 2;
-	float a;
-	float b;
+	double a;
+	double b;
 	char wybor;
-	cout.precision(dokladnosc);
 
 	system("CLS");
 
+	cout << "Witaj w calkulatorze!\n"
+		 << endl;
+
+	system("pause");
+
 	if (argc != 1)
 	{
-		//for (int i = 0; i < argc; i++) {
-		//cout << " what" << argv[i] << endl;
-		//}
-		cout << "Ilosc wprowadzonych argumentow: " << argc << endl;
-		double xx;
-		char cho;
-		double yy;
-		int prec;
-		switch (argc)
+
+		for (int i = 0; i < argc; i++)
 		{
-			//case 2: "HELP"
-		case 4:
-		{
-			xx = atof(argv[1]);
-			cho = *argv[2];
-			yy = 0;
-			prec = atoi(argv[3]);
-			cout.precision(prec);
-			cout << "Z dokladnoscia do: " << prec << " liczb po przecinku." << endl;
-			cout << fixed << xx << endl;
-			cout << cho << endl;
-			break;
-		}
-		case 5:
-		{
-			xx = atof(argv[1]);
-			cho = *argv[2];
-			yy = atof(argv[3]);
-			prec = atoi(argv[4]);
-			cout.precision(prec);
-			cout << "Z dokladnoscia do: " << prec << " liczb po przecinku." << endl;
-			cout << fixed << xx << endl;
-			cout << cho << endl;
-			cout << fixed << yy << endl;
-			break;
-		}
-		default:
-		{
-			cout << "Nieprawidlowa ilosc argumentow! \nUruchom program z poleceniem 'pomoc' aby uzyskac wiecej informacji..." << endl;
-			system("pause");
-			exit(0);
-			break;
-		}
+			cout << argv[i] << endl;
 		}
 
-		kalkulator(xx, cho, yy);
+		//double x = argv[1];
+		//double y = argv[3];
+		//char wyborCMD = argv[2];
+
+		//kalkulator(x, wyborCMD, y);
 
 		cout << "Zamykam program..." << endl;
 		system("pause");
@@ -359,50 +288,35 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-
-		cout << "Witaj w C++alkulatorze!\n"
-			<< endl;
-		UstawDokladnosc();
-		system("pause");
-		system("cls");
-
 		for (;;)
 		{
 
 			system("cls");
 
-			cout << "Wybierz operacje:\n"
-				<< "\t d \tZmien dokladnosc\n"
-				<< "\t + \tDodawanie\n"
-				<< "\t - \tOdejmowanie\n"
-				<< "\t * \tMnozenie\n"
-				<< "\t / \tDzielenie\n"
-				<< "\t ^ \tPotegowanie\n"
-				<< "\t p \tPierwiastkowanie\n"
-				<< "\t % \tProcent\n"
-				<< "\t o \tOdwrotnosc\n"
-				<< "\t l \tLogarytmowanie\n"
-				<< "\t s \tSinus\n"
-				<< "\t c \tCosinus\n"
-				<< "\tq/Q \tAby wyjsc.\n"
-				<< "\nWybieram: \t"
-				<< endl;
+			cout << "Wybierz operację:\n"
+				 << "\t + \tDodawanie\n"
+				 << "\t - \tOdejmowanie\n"
+				 << "\t * \tMnozenie\n"
+				 << "\t / \tDzielenie\n"
+				 << "\t ^ \tPotegowanie\n"
+				 << "\t p \tPierwiastkowanie\n"
+				 << "\t % \tProcent\n"
+				 << "\t o \tOdwrotnosc\n"
+				 << "\t l \tLogarytmowanie\n"
+				 << "\t s \tSinus\n"
+				 << "\t c \tCosinus\n"
+				 << "\tq/Q \tAby wyjsc.\n"
+				 << "\nWybieram: \t"
+				 << endl;
 
 			cin >> wybor;
 
 			switch (wybor)
 			{
-			case 'd':
-			{
-				UstawDokladnosc();
-				system("pause");
-				break;
-			}
 			case '+':
 			{
 				cout << "Podaj pierwsza liczbe: ";
-				scanf_s("%f", &a);
-				//cin >> a;
+				cin >> a;
 
 				cout << "Podaj druga liczbe: ";
 				cin >> b;
@@ -539,7 +453,7 @@ int main(int argc, char *argv[])
 			default:
 			{
 				cout << "Niepoprawny operator!\n";
-				system("pause");
+
 				break;
 			}
 			}
