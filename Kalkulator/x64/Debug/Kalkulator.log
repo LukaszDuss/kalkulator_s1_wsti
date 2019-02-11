@@ -1,5 +1,4 @@
 ﻿  Kalkulator.cpp
-c:\users\wookie\source\repos\kalkulator_s1_wsti\kalkulator\kalkulator.cpp(94): warning C4244: 'argument': conversion from 'double' to 'std::streamsize', possible loss of data
-c:\users\wookie\source\repos\kalkulator_s1_wsti\kalkulator\kalkulator.cpp(349): warning C4244: 'argument': conversion from 'double' to 'std::streamsize', possible loss of data
-c:\users\wookie\source\repos\kalkulator_s1_wsti\kalkulator\kalkulator.cpp(399): warning C4566: character represented by universal-character-name '\u017C' cannot be represented in the current code page (1252)
+c:\users\wookie\source\repos\kalkulator_s1_wsti\kalkulator\kalkulator.cpp(141): warning C4244: 'argument': conversion from 'double' to 'std::streamsize', possible loss of data
+c:\users\wookie\source\repos\kalkulator_s1_wsti\kalkulator\kalkulator.cpp(428): warning C4244: 'argument': conversion from 'double' to 'std::streamsize', possible loss of data
   Kalkulator.vcxproj -> C:\Users\Wookie\source\repos\kalkulator_s1_wsti\x64\Debug\Kalkulator.exe
