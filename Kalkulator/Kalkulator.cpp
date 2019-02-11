@@ -110,12 +110,13 @@ double tylkoLiczby(string inputString) {
 }
 
 void tylkoLiczbyNoReturn(string inputString) {
-	cout << inputString << endl;
-	string regexFloat = "((\\+|-)?[[:digit:]]+)(\\.(([[:digit:]]+)?))?"; // wyrazenie regularne dla liczby zmiennoprzcinkowej 
+	string regexFloat = "((\\+|-)?\\d+)(\\.((\\d+)?))?"; // wyrazenie regularne dla liczby zmiennoprzcinkowej 
 	smatch regexMatch;
 	if (!regex_search(inputString, regexMatch, regex(regexFloat)))
 	{
 		cout << "Niepoprawna wartosc... sprobuj ponownie" << endl;
+		system("pause");
+		exit(0);
 	}
 	
 }
@@ -193,7 +194,7 @@ void Dzielenie(double x, double y)
 		else
 		{
 			double wynik = x / y;
-			cout << "\n" << "Iloraz wynosi: " << fixed << wynik << "\n" << endl;
+			cout << "\n" << fixed << "Iloraz wynosi: "  << wynik << "\n" << endl;
 		}
 	}
 }
@@ -211,7 +212,7 @@ void Potegowanie(double a, double x)
 	else
 	{
 		double wynik = pow(x, a);
-		cout << "\n" << "Potega " << a << " stopnia z: " << x << " wynosi: " << wynik << "\n" << endl;
+		cout << "\n" << fixed << "Potega " << a << " stopnia z: " << x << " wynosi: " << wynik << "\n" << endl;
 	}
 }
 //===============================================//===============================================
@@ -227,7 +228,7 @@ void Pierwiastkowanie(double a, double x)
 	else
 	{
 		double wynik = pow(x, 1 / a);
-		cout << "\n" << "Pierwiastek " << a << " stopnia z: " << x << " wynosi: " << wynik << "\n" << endl;
+		cout << "\n" << fixed << "Pierwiastek " << a << " stopnia z: " << x << " wynosi: " << wynik << "\n" << endl;
 	}
 }
 
@@ -244,7 +245,7 @@ void Procenty(double x, double y)
 	else
 	{
 		double wynik = ((x / y) * 100);
-		cout << "\n" << "Procentowa wartosc: " << x << " z " << y << " wynosi: " << wynik << "%" << "\n" << endl;
+		cout << "\n" << fixed << "Procentowa wartosc: " << x << " z " << y << " wynosi: " << wynik << "%" << "\n" << endl;
 	}
 }
 
@@ -260,8 +261,8 @@ void Odwrotnosc(double x)
 	}
 	else
 	{
-		double wynik = (1 / x);
-		cout << "\n" << "Odwrotnosc liczby " << x << " wynosi: " << wynik << "\n" << endl;
+		double wynik = (1 / (x));
+		cout << "\n" << fixed << "Odwrotnosc liczby " << x << " wynosi: " << wynik <<"\n" << endl;
 	}
 }
 
@@ -287,7 +288,7 @@ void Logarytmowanie(double a, double x)
 	else
 	{
 		double wynik = (log(x) / log(a)); //check
-		cout << "\n" << "Logarytm o podstawie " << a << " z " << x << " wynosi: " << fixed << wynik << "\n" << endl;
+		cout << "\n" << fixed << "Logarytm o podstawie " << a << " z " << x << " wynosi: "  << wynik << "\n" << endl;
 	}
 }
 
@@ -298,7 +299,7 @@ void Logarytmowanie(double a, double x)
 void Sinus(double x)
 {
 	double wynik = sin(x * PI / 180);
-	cout << "\n" << "Sinus kata " << x << " wynosi: " << fixed << wynik << "\n" << endl;
+	cout << "\n" << "Sinus kata " << fixed << x << " wynosi: "  << wynik << "\n" << endl;
 }
 
 //===============================================//===============================================
@@ -308,7 +309,7 @@ void Sinus(double x)
 void Cosinus(double x)
 {
 	double wynik = cos(x * PI / 180);
-	cout << "\n" << "Cosinus kata " << x << " wynosi: " << fixed << wynik << "\n" << endl;
+	cout << "\n" << "Cosinus kata " << fixed << x << " wynosi: " <<   wynik << "\n" << endl;
 }
 
 //===============================================//===============================================
@@ -490,9 +491,9 @@ int main(int argc, char *argv[]) // main( ilość argumentów, tablica pointeró
 				yy = NULL; // zerowanie zbędnej (nie podanej) zmiennej
 				prec = stoi(argv[3]); // ostatni argument jest deklaracją dokłądności wyświetlania liczb po przecinku 
 				cout.precision(prec); // ustawienie dokładności wyświetlania
-				cout << "\n" << "Z dokladnoscia do: " << prec << " liczb po przecinku." << "\n" << endl;
-				cout << fixed << xx << endl;
-				cout << cho << endl;
+				cout << "\n" << "Dokladnosc do: " << prec << " liczb po przecinku." << "\n" << endl;
+				//cout << fixed << xx << endl;
+				//cout << cho << endl;
 				kalkulator(xx, cho, yy); // wywołanie funkcji kalkulatora (liczba , operacja , NULL)
 				cout << "\n" << "Zamykam program..." << "\n" << endl;
 				break;
@@ -508,10 +509,10 @@ int main(int argc, char *argv[]) // main( ilość argumentów, tablica pointeró
 				yy = stod(argv[3]);
 				prec = stoi(argv[4]);
 				cout.precision(prec);
-				cout << "\n" << "Z dokladnoscia do: " << prec << " liczb po przecinku." << "\n" << endl;
-				cout << fixed << xx << endl;
-				cout << cho << endl;
-				cout << fixed << yy << endl;
+				cout << "\n" << "Dokladnosc do: " << prec << " liczb po przecinku." << "\n" << endl;
+				//cout << fixed << xx << endl;
+				//cout << cho << endl;
+				//cout << fixed << yy << endl;
 				kalkulator(xx, cho, yy); // wywołanie funkcji kalkulatora (liczba , operacja , liczba)
 				cout << "\n" << "Zamykam program..." << "\n" << endl;
 				break;
@@ -546,8 +547,8 @@ int main(int argc, char *argv[]) // main( ilość argumentów, tablica pointeró
 				<< "\t" << " - " << "\t" << "Odejmowanie" << "\n"
 				<< "\t" << " * " << "\t" << "Mnozenie" << "\n"
 				<< "\t" << " / " << "\t" << "Dzielenie" << "\n"
-				<< "\t" << " ^ " << "\t" << "Potegowanie" << "\n"
-				<< "\t" << " p " << "\t" << "Pierwiastkowanie" << "\n"
+				<< "\t" << " p " << "\t" << "Potegowanie" << "\n"
+				<< "\t" << " r " << "\t" << "Pierwiastkowanie" << "\n"
 				<< "\t" << " % " << "\t" << "Procent" << "\n"
 				<< "\t" << " o " << "\t" << "Odwrotnosc" << "\n"
 				<< "\t" << " l " << "\t" << "Logarytmowanie" << "\n"
@@ -623,7 +624,7 @@ int main(int argc, char *argv[]) // main( ilość argumentów, tablica pointeró
 				system("pause");
 				break;
 			}
-			case '^':
+			case 'p':
 			{
 				cout << "\n" << "Podaj stopien potegi: ";
 				cin >> inputA;
@@ -637,7 +638,7 @@ int main(int argc, char *argv[]) // main( ilość argumentów, tablica pointeró
 				system("pause");
 				break;
 			}
-			case 'p':
+			case 'r':
 			{
 				cout << "\n" << "Podaj stopien pierwiastka: ";
 				cin >> inputA;
