@@ -1,82 +1,5 @@
-﻿/*
-		wersja 1
-
-Obslugiwane dzialania matematyczne:
-Dodawanie
--dziala 
-Odejmowanie 
--dziala
-Mnozenie 
--dziala
-Dzielenie 
--dziala
-Potegowanie 
--dziala
-Pierwiastkowanie 
--dziala
-Procent 
--dziala
-Odwrotnosc 
--dziala
-Logarytmowanie 
--dziala
-Sinus 
--dziala
-Cosinus 
--dziala
-
-		wersja 2
-
-- brak obslugi linii polecen
-- ZROBIONE
-
-- brak polskich liter zamiast nich "krzaczki", to trzeba poprawic lub zrezygnowac z PL znakow \
-- SKASOWAC POLSKIE ZNAKI - ZROBIONE
-
-- przy wyliczaniu % malo jasne komunikaty dla usera
-- DODANE - ZROBIONE
-
-- logarytmowanie, jakie ln czy log ? dziala nieprawidlowo!
-- POPRAWIONE - ZROBIONE
-
-- brak obslugi bledow np mnozenie 23 * a daje 0
-- DODANE - ZROBIONE
-
-- przydalo by sie dodac jeszcze opcje ile miejsc po przecinku wyswietla kalk
-- DODANE - ZROBIONE
-
-		wersja 3
-
-- pierwsze napisy w programie sklejone i brak "K"
-- POPRAWIONE
-
-- po wybraniu obliczenia przykładowo: drugiego stopnia pierwiastka z -4 dostaję 0.841 ??
--POPRAWIONE
-
-- przydała by się opcja /? lub /h /help coś w tym stylu ładnie opisane bo teraz nie wiadomo jaki operator z wiersza poleceń zastosować
--DODANO
-
-- menu z wiersza poleceń: prog.exe 2 p 4 daje mi "Pierwiastek 0.0000 stopnia z 2.0000 wynosi: inf" - takie rzeczy trzeba poprawic
--POPRAWIONE 
-
-- prog.exe 2 * 3 daje 0.0000 itd
--Wynika z wymogu podania dokładności
--POPRAWIONE
-
-	wersja 4
-
-- z jakiegoś powodu nie przyjmuje mi operatora ^ z wiersza poleceń
-- zamieniono pierwiastek na r (root) potęga na p (power)
--ZMIENIONE
-
-- lepsza obsługa z wiersza polecen
-- dodano sprawdzanie ilosci zmiennych przy krytycznych funkcjach oraz przesunięto miejsce wywołania funkcji kalkulator
--DODANE
-
-nie wiem dlaczego w momencie konwersji liczb STOD "gubią się" częsci ułamkowe liczby która jest zapisana za pomocą kropki a nie przecinka 
---potrzebuje pomocy
-*/
-
+﻿//===============================================//===============================================
+// PROGRAM WYMAGA KOMPILACJI C11!!
 //===============================================//===============================================
 
 #include "pch.h" // precompiled header
@@ -100,7 +23,6 @@ double tylkoLiczby(string inputString) {
 	smatch regexMatch;
 	double result;
 	if (!regex_search(inputString, regexMatch, regex(regexFloat))){
-		
 		cout << "Niepoprawna wartosc... sprobuj ponownie" << endl;
 		cin >> inputString;
 		tylkoLiczby(inputString);

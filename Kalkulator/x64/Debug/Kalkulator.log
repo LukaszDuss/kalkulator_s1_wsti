@@ -1,4 +1,5 @@
-﻿  Kalkulator.cpp
-c:\users\wookie\source\repos\kalkulator_s1_wsti\kalkulator\kalkulator.cpp(138): warning C4244: 'argument': conversion from 'double' to 'std::streamsize', possible loss of data
-c:\users\wookie\source\repos\kalkulator_s1_wsti\kalkulator\kalkulator.cpp(425): warning C4244: 'argument': conversion from 'double' to 'std::streamsize', possible loss of data
+﻿  pch.cpp
+  Kalkulator.cpp
+c:\users\wookie\source\repos\kalkulator_s1_wsti\kalkulator\kalkulator.cpp(137): warning C4244: 'argument': conversion from 'double' to 'std::streamsize', possible loss of data
+c:\users\wookie\source\repos\kalkulator_s1_wsti\kalkulator\kalkulator.cpp(424): warning C4244: 'argument': conversion from 'double' to 'std::streamsize', possible loss of data
   Kalkulator.vcxproj -> C:\Users\Wookie\source\repos\kalkulator_s1_wsti\x64\Debug\Kalkulator.exe
